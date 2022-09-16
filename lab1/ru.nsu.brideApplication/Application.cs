@@ -11,7 +11,7 @@ public class Application
     public static void Main(string[] args)
     {
         ConfigurationManager configurationManager = new();
-        configurationManager.AddJsonFile("appsettings.json");
+        configurationManager.AddJsonFile("/Users/stanislavutockin/Documents/dotNetLabs/lab1/appsettings.json");
 
         var reportConfiguration = new ReportConfiguration(configurationManager);
         var contenderConfiguration = new ContenderConfiguration(configurationManager);
