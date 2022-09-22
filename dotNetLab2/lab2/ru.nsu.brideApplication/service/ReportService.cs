@@ -1,9 +1,10 @@
 using dotNetLab2.lab2.ru.nsu.brideApplication.configuration;
 using dotNetLab2.lab2.ru.nsu.brideApplication.model;
+using Microsoft.Extensions.Hosting;
 
 namespace dotNetLab2.lab2.ru.nsu.brideApplication.service;
 
-public class ReportService
+public class ReportService : IHostedService
 {
     private readonly ReportConfiguration _configuration;
 
@@ -25,5 +26,15 @@ public class ReportService
                 streamWriter.WriteLineAsync("принцесса никого не выбрала!");
             }
         }
+    }
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
     }
 }

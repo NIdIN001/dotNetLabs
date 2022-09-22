@@ -1,16 +1,16 @@
+using dotNetLab2.lab2.ru.nsu.brideApplication.configuration;
 using dotNetLab2.lab2.ru.nsu.brideApplication.model.strategy;
+using Microsoft.Extensions.Hosting;
 
 namespace dotNetLab2.lab2.ru.nsu.brideApplication.model;
 
-public class Princess
+public class Princess : IHostedService
 {
-    private Friend _friend;
     private readonly IVoteStrategy _voteStrategy;
 
-    public Princess(Friend friend, IVoteStrategy voteStrategy)
+    public Princess(Friend friend, ContenderConfiguration configuration)
     {
-        _friend = friend;
-        _voteStrategy = voteStrategy;
+        _voteStrategy = new WikiVoteStrategy(configuration.ContendersCount, friend);
     }
 
     public bool MakeDecision(Contender contender)
@@ -29,5 +29,15 @@ public class Princess
         var decisionPosition = allContenders.IndexOf(contender);
 
         return decisionPosition < allContenders.Count / 2 ? 0 : decisionPosition;
+    }
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
     }
 }

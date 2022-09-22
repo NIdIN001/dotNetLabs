@@ -1,16 +1,26 @@
 using dotNetLab2.lab2.ru.nsu.brideApplication.model;
+using Microsoft.Extensions.Hosting;
 
 namespace dotNetLab2.lab2.ru.nsu.brideApplication.service;
 
-public class ThroneRoom
+public class ThroneRoom : IHostedService
 {
-    public Contender? ChooseHusband(Princess princess, Hall hall)
-    {
-        for (int i = 0; i < hall.GetContendersCount(); i++)
-        {
-            var contender = hall.GetByIndex(i);
+    private readonly Princess _princess;
+    private readonly Hall _hall;
 
-            var isSelected = princess.MakeDecision(contender);
+    public ThroneRoom(Princess princess, Hall hall)
+    {
+        _princess = princess;
+        _hall = hall;
+    }
+
+    public Contender? ChooseHusband()
+    {
+        for (int i = 0; i < _hall.GetContendersCount(); i++)
+        {
+            var contender = _hall.GetByIndex(i);
+
+            var isSelected = _princess.MakeDecision(contender);
             if (isSelected)
             {
                 return contender;
@@ -18,5 +28,15 @@ public class ThroneRoom
         }
 
         return null;
+    }
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
     }
 }

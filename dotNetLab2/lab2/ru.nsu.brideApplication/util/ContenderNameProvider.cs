@@ -2,8 +2,8 @@ namespace dotNetLab2.lab2.ru.nsu.brideApplication.util;
 
 public class ContenderNameProvider
 {
-    private List<string> _possibleNames;
-    private List<string> _possibleSurnames;
+    private readonly List<string> _possibleNames;
+    private readonly List<string> _possibleSurnames;
 
     public ContenderNameProvider(string pathToFirstNameFile, string pathToLastNameFile)
     {
