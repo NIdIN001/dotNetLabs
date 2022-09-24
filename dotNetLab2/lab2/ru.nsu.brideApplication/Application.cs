@@ -12,9 +12,8 @@ public class Application
     {
         var builder = CreateHostBuilder(args);
         var host = builder.Build();
-
-        var applicationService = ActivatorUtilities.CreateInstance<ApplicationService>(host.Services);
-        applicationService.Run();
+        host.Run();
+        host.StopAsync();
     }
 
     private static IHostBuilder CreateHostBuilder(string[] args)
@@ -30,7 +29,7 @@ public class Application
                 services.AddSingleton<Hall>();
                 services.AddSingleton<ReportService>();
                 services.AddSingleton<ThroneRoom>();
-                services.AddSingleton<ApplicationService>();
+                services.AddHostedService<ApplicationService>();
             });
     }
 }

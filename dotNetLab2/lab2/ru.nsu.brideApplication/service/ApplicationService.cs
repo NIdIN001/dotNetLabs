@@ -13,9 +13,12 @@ public class ApplicationService : IHostedService
     private readonly ReportConfiguration _reportConfiguration;
     private readonly Friend _friend;
 
+    private readonly IHostApplicationLifetime _hostApplicationLifetime;
+
     public ApplicationService(ThroneRoom throneRoom, Hall hall,
         ContenderConfiguration contenderConfiguration, ReportConfiguration reportConfiguration,
-        ReportService reportService, Friend friend)
+        ReportService reportService, Friend friend,
+        IHostApplicationLifetime appLifetime)
     {
         _throneRoom = throneRoom;
         _friend = friend;
@@ -25,9 +28,11 @@ public class ApplicationService : IHostedService
 
         _contenderConfiguration = contenderConfiguration;
         _reportConfiguration = reportConfiguration;
+        
+        _hostApplicationLifetime = appLifetime;
     }
 
-    public void Run()
+    private void Run()
     {
         File.Delete(_reportConfiguration.ReportPath);
         var totalHappiness = 0;
@@ -43,7 +48,7 @@ public class ApplicationService : IHostedService
             Reset();
         }
 
-        Console.Write(totalHappiness / (float)_contenderConfiguration.TriesCount);
+        Console.WriteLine(totalHappiness / (float)_contenderConfiguration.TriesCount);
     }
 
     private void Reset()
@@ -54,6 +59,7 @@ public class ApplicationService : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        Run();
         return Task.CompletedTask;
     }
 
