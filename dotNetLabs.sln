@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetLabs", "dotNetLab1\do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetLab2", "dotNetLab2\dotNetLab2.csproj", "{97225AF8-3A42-4CFB-9AF3-052101226A70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetLab2Test", "dotNetLab2Test\dotNetLab2Test\dotNetLab2Test.csproj", "{090C56D4-8617-4B50-B4EA-19690E7A1063}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{97225AF8-3A42-4CFB-9AF3-052101226A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97225AF8-3A42-4CFB-9AF3-052101226A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97225AF8-3A42-4CFB-9AF3-052101226A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{090C56D4-8617-4B50-B4EA-19690E7A1063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{090C56D4-8617-4B50-B4EA-19690E7A1063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{090C56D4-8617-4B50-B4EA-19690E7A1063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{090C56D4-8617-4B50-B4EA-19690E7A1063}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

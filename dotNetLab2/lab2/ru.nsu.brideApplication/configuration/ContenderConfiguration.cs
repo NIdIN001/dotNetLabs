@@ -10,10 +10,10 @@ public class ContenderConfiguration : IHostedService
     private const string FirstnameProperty = "SelectOptions:firstname";
     private const string LastnameProperty = "SelectOptions:lastname";
 
-    public int ContendersCount { get; }
-    public int TriesCount { get; }
-    public string Firstname { get; }
-    public string Lastname { get; }
+    public virtual int ContendersCount { get; set; }
+    public int TriesCount { get; set; }
+    public string Firstname { get; set; }
+    public string Lastname { get; set; }
 
     public ContenderConfiguration()
     {

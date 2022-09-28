@@ -16,7 +16,7 @@ public class Friend : IComparer<Contender>, IHostedService
         _watchedContender.Add(contender);
     }
 
-    public int GetTotalWatchedCount()
+    public virtual int GetTotalWatchedCount()
     {
         return _watchedContender.Count;
     }
@@ -46,7 +46,7 @@ public class Friend : IComparer<Contender>, IHostedService
         return 0;
     }
 
-    public bool IsBetterThenAllViewed(Contender candidate)
+    public virtual bool IsBetterThenAllViewed(Contender candidate)
     {
         foreach (var contender in _watchedContender)
         {

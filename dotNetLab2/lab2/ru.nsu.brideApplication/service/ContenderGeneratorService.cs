@@ -17,6 +17,8 @@ public class ContenderGeneratorService : IHostedService
         _contenderNameProvider = new ContenderNameProvider(_contenderConfiguration.Firstname,
             _contenderConfiguration.Lastname);
         _possibleAttractiveness = new List<int>();
+        
+        FillPossibleAttractiveness();
     }
 
     public Contender GenerateContender()

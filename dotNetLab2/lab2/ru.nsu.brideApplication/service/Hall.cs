@@ -11,6 +11,10 @@ public class Hall : IHostedService
 
     private readonly List<Contender> _allContenders;
 
+    public Hall()
+    {
+    }
+
     public Hall(ContenderGeneratorService contenderGenerator, ContenderConfiguration contenderConfiguration)
     {
         _contenderConfiguration = contenderConfiguration;
@@ -20,7 +24,7 @@ public class Hall : IHostedService
         Fill();
     }
 
-    public Contender GetByIndex(int index)
+    public virtual Contender GetByIndex(int index)
     {
         return _allContenders[index];
     }
@@ -30,14 +34,9 @@ public class Hall : IHostedService
         return _allContenders;
     }
 
-    public int GetContendersCount()
+    public virtual int GetContendersCount()
     {
         return _contenderConfiguration.ContendersCount;
-    }
-
-    public void Clear()
-    {
-        _allContenders.Clear();
     }
 
     public void Fill()
@@ -48,6 +47,11 @@ public class Hall : IHostedService
         {
             _allContenders.Add(_contenderGeneratorService.GenerateContender());
         }
+    }
+
+    private void Clear()
+    {
+        _allContenders.Clear();
     }
 
     public Task StartAsync(CancellationToken cancellationToken)

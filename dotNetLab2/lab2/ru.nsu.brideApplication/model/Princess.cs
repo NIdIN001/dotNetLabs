@@ -8,12 +8,17 @@ public class Princess : IHostedService
 {
     private readonly IVoteStrategy _voteStrategy;
 
+    /* NoArgsConstructor для тестов */
+    public Princess()
+    {
+    }
+
     public Princess(Friend friend, ContenderConfiguration configuration)
     {
         _voteStrategy = new WikiVoteStrategy(configuration.ContendersCount, friend);
     }
 
-    public bool MakeDecision(Contender contender)
+    public virtual bool MakeDecision(Contender contender)
     {
         return _voteStrategy.Vote(contender);
     }
